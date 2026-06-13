@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من سيربح المليون - تحميل التطبيق</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #0A0A2E;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Stars background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,215,0,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 45%, rgba(255,215,0,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,215,0,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 30%, rgba(255,215,0,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 60%, rgba(255,215,0,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 80%, rgba(255,215,0,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,215,0,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 85%, rgba(255,215,0,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .icon-wrapper {
+      display: inline-block;
+      margin-bottom: 28px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .app-icon {
+      width: 130px;
+      height: 130px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #0A0A2E 0%, #1A1A5E 100%);
+      border: 3px solid #FFD700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 70px;
+      box-shadow: 0 0 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,215,0,0.2);
+      margin: 0 auto;
+    }
+
+    .app-title {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #FFD700;
+      text-shadow: 0 0 20px rgba(255,215,0,0.6);
+      margin-bottom: 10px;
+    }
+
+    .app-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .version-badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.12);
+      border: 1px solid rgba(255,215,0,0.4);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.85rem;
+      color: #FFD700;
+      margin-top: 12px;
+    }
+
+    /* Download button */
+    .download-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
+      color: #0A0A2E;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 900;
+      padding: 18px 48px;
+      border-radius: 50px;
+      box-shadow: 0 6px 30px rgba(255,215,0,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(255,215,0,0.6);
+    }
+
+    .download-btn svg {
+      width: 26px;
+      height: 26px;
+      fill: #0A0A2E;
+    }
+
+    .file-info {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Features */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,215,0,0.2);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,215,0,0.2);
+      border-radius: 16px;
+      padding: 22px 18px;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(255,215,0,0.5);
+      background: rgba(255,215,0,0.07);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* Installation steps */
+    .steps {
+      margin-bottom: 50px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,215,0,0.15);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+      color: #0A0A2E;
+    }
+
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 4px;
+    }
+
+    .step-content p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* Prize ladder */
+    .prizes-section {
+      margin-bottom: 50px;
+    }
+
+    .prizes-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .prize-tag {
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    .prize-tag.top {
+      background: rgba(255,215,0,0.2);
+      border-color: #FFD700;
+      font-size: 1rem;
+      font-weight: 900;
+      padding: 8px 20px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.35);
+      font-size: 0.82rem;
+    }
+
+    .footer a {
+      color: rgba(255,215,0,0.6);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .app-title { font-size: 1.9rem; }
+      .download-btn { font-size: 1.1rem; padding: 15px 32px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="icon-wrapper">
+      <div class="app-icon">🏆</div>
+    </div>
+    <h1 class="app-title">من سيربح المليون</h1>
+    <p class="app-subtitle">اختبر معلوماتك واربح المليون!</p>
+    <div class="version-badge">الإصدار 1.0.0</div>
+  </div>
+
+  <!-- Download Button -->
+  <div class="download-section">
+    <a class="download-btn"
+       href="https://github.com/alghaithi-pro/million-game/releases/download/v1.0.0/app-release.apk"
+       download>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6V9h4l-7-7z"/>
+      </svg>
+      تحميل التطبيق
+    </a>
+    <div class="file-info">APK • نظام Android • الحجم ~44 ميجابايت</div>
+  </div>
+
+  <!-- Features -->
+  <h2 class="section-title">مميزات اللعبة</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">❓</div>
+      <div class="feature-title">1500 سؤال</div>
+      <div class="feature-desc">أسئلة متنوعة في جميع المجالات بثلاثة مستويات صعوبة</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">3 مساعدات</div>
+      <div class="feature-desc">50:50، رأي الجمهور، والاتصال بصديق</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <div class="feature-title">محطات أمان</div>
+      <div class="feature-desc">محطتا أمان عند السؤال 5 والسؤال 10</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔊</div>
+      <div class="feature-title">تحكم بالصوت</div>
+      <div class="feature-desc">كتم وتشغيل الصوت في أي وقت خلال اللعبة</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌙</div>
+      <div class="feature-title">ثيم ليلي</div>
+      <div class="feature-desc">واجهة زرقاء داكنة بتصميم ذهبي أنيق</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">مجاني تماماً</div>
+      <div class="feature-desc">بدون إعلانات، بدون مشتريات داخلية</div>
+    </div>
+  </div>
+
+  <!-- Prize Ladder -->
+  <div class="prizes-section">
+    <h2 class="section-title">سلم الجوائز</h2>
+    <div class="prizes-list">
+      <span class="prize-tag">1,000 ريال</span>
+      <span class="prize-tag">2,000 ريال</span>
+      <span class="prize-tag">3,000 ريال</span>
+      <span class="prize-tag">5,000 ريال</span>
+      <span class="prize-tag">7,500 ريال</span>
+      <span class="prize-tag">10,000 ريال</span>
+      <span class="prize-tag">15,000 ريال</span>
+      <span class="prize-tag">20,000 ريال</span>
+      <span class="prize-tag">30,000 ريال</span>
+      <span class="prize-tag">50,000 ريال</span>
+      <span class="prize-tag">75,000 ريال</span>
+      <span class="prize-tag">125,000 ريال</span>
+      <span class="prize-tag">250,000 ريال</span>
+      <span class="prize-tag">500,000 ريال</span>
+      <span class="prize-tag top">🏆 1,000,000 ريال</span>
+    </div>
+  </div>
+
+  <!-- Installation Steps -->
+  <div class="steps">
+    <h2 class="section-title">خطوات التثبيت</h2>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>تحميل الملف</h4>
+        <p>اضغط على زر "تحميل التطبيق" أعلاه لتحميل ملف APK على جهازك</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>السماح بتثبيت المصادر غير المعروفة</h4>
+        <p>اذهب إلى الإعدادات ← الأمان ← السماح بالتثبيت من مصادر غير معروفة، ثم فعّل الخيار</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>فتح ملف التثبيت</h4>
+        <p>افتح الملف المحمّل من مجلد التنزيلات واضغط "تثبيت"</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>ابدأ اللعب!</h4>
+        <p>بعد اكتمال التثبيت افتح التطبيق واستمتع باختبار معلوماتك</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Play Online Link -->
+  <div style="text-align:center; margin-bottom:40px;">
+    <p style="color:rgba(255,255,255,0.5); margin-bottom:14px;">يمكنك أيضاً اللعب مباشرةً من المتصفح</p>
+    <a href="https://alghaithi-pro.github.io/million-game/"
+       style="color:#FFD700; font-weight:700; font-size:1rem; text-decoration:none;
+              border:1px solid rgba(255,215,0,0.4); padding:10px 28px; border-radius:30px;">
+      🎮 العب الآن من المتصفح
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 من سيربح المليون •
+      <a href="https://github.com/alghaithi-pro/million-game">GitHub</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
